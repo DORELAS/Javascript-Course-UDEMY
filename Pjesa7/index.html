@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asynchronous JavaScript</title>
+</head>
+<body>
+    <h1>Asynchronous JavaScript</h1>
+    <script>
+ /*
+ const e_dyta = () => {
+    setTimeout(() => {
+    console.log('How you doing!');
+    }, 2000);    
+        }
+ const e_para = () => {
+    console.log('Hi there.');
+    e_dyta();
+    console.log('Joey T.');
+ }
+
+  e_para();
+*/
+
+/*
+function emertime () {
+  setTimeout(() => {
+      const id = [1, 2, 3, 4, 5];
+      console.log(id);
+
+  setTimeout((per) => {
+          const permajtje = {
+              emer: 'Dorela',
+              mbiemer: 'Sinjari'
+          };
+  console.log(`${per} ka permbajtje ${permajtje.emer}.`);
+
+  setTimeout(mb => { 
+      const emertim = {
+        emer: 'Dorela',
+        mbiemer: 'Sinjari'
+      };
+console.log(emertim);
+  }, 1500, permajtje.mbiemer);
+      }, 1000, id[4]);
+  }, 2000);
+        }
+
+        emertime();
+*/
+
+/*
+
+const raste = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve([1, 2, 3, 4, 5]);
+      reject([1,2, 3, 4, 5]);
+    }, 1000);
+});
+
+const emertime = id => {
+return new Promise((resolve, reject) => {
+     setTimeout(ID => {
+const permajtje = {
+              emer: 'Dorela',
+              mbiemer: 'Sinjari'
+          };
+   resolve(`${ID} ka permbajtje ${permajtje.emer}.`);
+    }, 1000, id);
+});
+};
+
+const person = info => {
+return new Promise((resolve, reject) => {
+    setTimeout(mb => { 
+      const emertim = {
+        emer: 'Dorela',
+        mbiemer: 'Sinjari'
+      };
+resolve(`${mb}, ${emertim.emer}`);
+  }, 1500, info);
+});
+};
+*/
+
+/*
+raste 
+.then (id => {
+    console.log(id);
+    return emertime(id[2]);
+})
+
+.then(permajtja => {
+      console.log(permajtja);
+      return person('Sinjari');
+})
+
+.then (dicka => {
+    console.log(dicka);
+})
+
+.catch (error => {
+    console.log('ERROR!');
+})
+
+*/
+
+/*
+async function getDhenaAW () {
+    const rastet = await raste;
+    console.log(rastet);
+    const permajtja = await emertime(rastet[2]);
+    console.log(permajtja);
+    const perzgjedhje = await person('Dorela Sinjari');
+    console.log(perzgjedhje);
+
+    return permajtja;
+}
+const per = getDhenaAW();
+console.log(per);
+
+getDhenaAW().then(rezultat => {
+    console.log(rezultat);
+    });
+    */
+
+    function getWeather(woeid) {
+            fetch(`https://crossorigin.me/https://www.metaweather.com/api/location/${woeid}/`)
+            .then(result => {
+                // console.log(result);
+                return result.json();
+            })
+            .then(data => {
+                // console.log(data);
+                const today = data.consolidated_weather[0];
+                console.log(`Temperatures today in ${data.title} stay between ${today.min_temp} and ${today.max_temp}.`);
+            })
+            .catch(error => console.log(error));
+        }
+        getWeather(2487956);
+        getWeather(44418);
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
